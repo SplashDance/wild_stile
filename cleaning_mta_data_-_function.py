@@ -1,12 +1,17 @@
+
+
 def fix_turnstile_data(filenames):
+    """
+    Takes list of MTA raw data filenames and cleans them up.
     
+    Takes a list of filenames (containing MTA raw data) and cleans up
+    the file, saving this new version as "updated_<filename>.txt".
+    """
     for name in filenames:
         new_csv = open('updated_' + name, 'a')
         with open(name, 'r') as f:
             for line in f:
-                line = line.split(',')
-                for element in line:
-                    element.strip()
+                line = line.strip().split(',')
 
                 prefix = ','.join(line[:3])
                 content = line[3:]
